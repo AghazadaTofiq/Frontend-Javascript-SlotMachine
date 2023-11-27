@@ -1,0 +1,288 @@
+:root {
+    --borderCol: #1e1e1e;
+    --light2: #b3d5eb;
+    --light1: #edfaf9;
+    --med: #72c0c3;
+    --textCol: lighten(var(--light1), 10%);
+  }
+  
+  body {
+    margin: 0;
+    background: var(--med);
+  }
+  
+  .container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .container .title {
+    font-family: "Fredoka One", cursive;
+    font-size: 3rem;
+    color: var(--textCol);
+    text-decoration: underline;
+  }
+  
+  .container .money-container {
+    position: relative;
+    margin-bottom: 0.5rem;
+    font-family: "Roboto", sans-serif;
+    color: var(--textCol);
+  }
+  
+  .container .money-container .changes {
+    position: absolute;
+    display: inline-flex;
+    top: 1rem;
+    font-weight: bold;
+  }
+  
+  .container .money-container .changes .change {
+    color: #044600;
+    padding-left: 0.5rem;
+    animation-duration: 1s;
+    animation-name: slideinLeft;
+    animation-fill-mode: forwards;
+  }
+  
+  .container .money-container .changes .change.negative {
+    color: #860000;
+  }
+  
+  .container .money-container .changes .change:nth-child(n) {
+    opacity: calc(1 - (n * 0.15));
+  }
+  
+  .container .money-container #money {
+    font-size: 2rem;
+    display: inline;
+    margin-left: -8rem;
+    font-weight: bold;
+  }
+  
+  .SlotMachine .play-area {
+    position: relative;
+    display: flex;
+    background-image: linear-gradient(
+      45deg,
+      var(--light1) 18.75%,
+      var(--light2) 18.75%,
+      var(--light2) 50%,
+      var(--light1) 50%,
+      var(--light1) 68.75%,
+      var(--light2) 68.75%,
+      var(--light2) 100%
+    );
+    background-size: 56.57px 56.57px;
+    height: 12.5rem;
+    border: solid var(--borderCol) 5px;
+  }
+  
+  .SlotMachine .play-area .reel-container {
+    user-select: none;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    height: 12.5rem;
+    overflow: hidden;
+    align-items: center;
+    width: 4rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  .SlotMachine .play-area .reel-container:first-child {
+    border-right: solid var(--borderCol) 3px;
+  }
+  
+  .SlotMachine .play-area .reel-container:last-child {
+    border-left: solid var(--borderCol) 3px;
+  }
+  
+  .SlotMachine .play-area .reel-container .reel-item {
+    font-size: 3rem;
+    animation-duration: 0.1s;
+    animation-name: slidein;
+  }
+  
+  .SlotMachine .play-area .reel-container .reel-item.deactivate {
+    animation-duration: 0.1s;
+    animation-name: slideOut;
+    animation-fill-mode: forwards;
+  }
+  
+  .SlotMachine .play-area .reel-container .reel-item.win {
+    animation: winFlashReels 1s infinite;
+    border-radius: 50%;
+  }
+  
+  .SlotMachine .play-area:before,
+  .SlotMachine .play-area:after {
+    position: absolute;
+    content: "";
+    width: 0;
+    height: 0;
+    top: calc(50% - 8px);
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+  }
+  
+  .SlotMachine .play-area:before {
+    left: 0;
+    border-left: 15px solid var(--borderCol);
+  }
+  
+  .SlotMachine .play-area:after {
+    right: 0;
+    border-right: 15px solid var(--borderCol);
+  }
+  
+  .container .info {
+    padding-top: 1rem;
+    padding-bottom: 3rem;
+  }
+  
+  .container .info .instructions {
+    color: var(--textCol);
+    margin-bottom: 1rem;
+    width: 500px;
+    text-align: center;
+    font-family: "Fredoka One", cursive;
+  }
+  
+  .container .info .prize-table {
+    width: 320px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    justify-content: space-between;
+    color: var(--textCol);
+    font-weight: bold;
+    font-family: "Roboto", sans-serif;
+    font-size: 1.3rem;
+  }
+  
+  .container .info .prize-table .doubles {
+    padding-right: 2rem;
+  }
+  
+  .container .info .prize-table .prize-item {
+    opacity: 0.4;
+    margin-bottom: 0.2rem;
+  }
+  
+  .container .info .prize-table .prize-item.active {
+    opacity: 1;
+    animation: winFlashPrizeTable 1s infinite;
+  }
+  
+  @keyframes slidein {
+    from {
+      font-size: 0.1rem;
+      opacity: 0;
+    }
+  
+    to {
+      font-size: 3rem;
+      opacity: 1;
+    }
+  }
+  
+  @keyframes slideOut {
+    to {
+      height: 0;
+      font-size: 0.1rem;
+      opacity: 0;
+    }
+  
+    from {
+      height: 3rem;
+      font-size: 3rem;
+      opacity: 1;
+    }
+  }
+  
+  @keyframes winFlashReels {
+    0% {
+      background-color: rgba(240, 240, 240, 0.2);
+    }
+  
+    50% {
+      background-color: rgba(20, 200, 20, 1);
+    }
+  
+    100% {
+      background-color: rgba(240, 240, 240, 0.2);
+    }
+  }
+  
+  @keyframes winFlashPrizeTable {
+    0% {
+      opacity: 0.2;
+    }
+  
+    50% {
+      opacity: 1;
+    }
+  
+    100% {
+      opacity: 0.2;
+    }
+  }
+  
+  @keyframes slideinLeft {
+    to {
+      font-size: 1rem;
+    }
+  
+    from {
+      font-size: 0rem;
+    }
+  }
+  
+.SlotMachine
+{
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 12.5em;
+}
+
+  #Lever
+  {
+      position: absolute;
+      width: 25px;
+      height: 180px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-left: 650px;
+      margin-bottom: 0px;
+      background-color:paleturquoise;
+      transform-origin: bottom; /* Set the starting point for rotation */
+      border-radius: 15px;
+  }
+  
+  #rollButton {
+      position: absolute;
+      width: 25px;
+      height: 25px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 155px;
+      border: none;
+      cursor: pointer;
+      background-color: greenyellow;
+      border-radius: 15px;
+  }
+  
+  #RollMe
+  {
+      display: flex;
+      justify-content: center;
+  }

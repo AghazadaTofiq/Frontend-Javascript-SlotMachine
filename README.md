@@ -2,8 +2,6 @@
 
 Welcome to the Smiley Slot Machine project! This simple slot machine game is implemented using mainly JavaScript, with additional HTML5 and CSS3 for the user interface.
 
-**Note: This project is not fully developed. Further enhancements and polishing are planned for future updates.**
-
 ## Features
 
 - **Rolling Reels:** Users can roll the slot machine reels by pushing the "Roll" button.
@@ -76,3 +74,5 @@ If you'd like to contribute to the development of this project, please follow th
 For any inquiries or feedback, please contact agazade.tofiq@gmail.com
 
 ![image](https://github.com/AghazadaTofiq/Frontend-Javascript-SlotMachine/assets/106061520/614e19f0-386f-4cfc-90c2-a4293ddc988e)
+
+**Note: This project is not fully developed. Further enhancements and polishing are planned for future updates.**
